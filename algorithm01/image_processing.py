@@ -1,16 +1,16 @@
 import cv2
 import numpy as np
 
-def extract_pattern_img(path):
+def extract_pattern_img(input_img):
     # 이미지 불러오기 및 그레이스케일 변환
     # img_01 = cv2.cvtColor(cv2.imread('resource/input-patterns/001.png'), cv2.COLOR_BGR2GRAY)
-    img_01 = cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2GRAY)
+    # input_img = cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2GRAY)
 
     # 이미지 가운데 지점에서 자르기
-    height, width = img_01.shape
+    height, width = input_img.shape
     start_row = height // 2 
     end_row = height     
-    cropped_img = img_01[start_row:end_row, 0:width]
+    cropped_img = input_img[start_row:end_row, 0:width]
     for_frame_img = cropped_img.copy()
 
     # cropped_img==30 값에서 체크되지 않은 dot 검출
@@ -50,4 +50,14 @@ def extract_pattern_img(path):
     # 패턴 edge와 dot 검출 이미지
     # cv2.imwrite('result-image/thresholded_pattern.png', closing_img_02)
 
-    return closing_img_01, closing_img_02
+    # dot의 반지름
+    r = int(np.sqrt((np.sum(for_frame_img_thresholded == 0)) / (9 * np.pi)))
+
+    pattern_location = {
+        'r': r
+    }
+
+    # 반지름 계산
+    # 픽셀 개수 = 9 * Area 가정 -> () ((9*Area) / (9*pi))의 제곱근 ).asint()
+
+    return closing_img_01, closing_img_02, pattern_location
