@@ -35,18 +35,10 @@ def main():
     else:
         patterns = compare_with_templates_dict(edge_pattern_input)
 
-    print(patterns)
     patterns = filter_on_path_dict(patterns)
-    print(patterns)
-
-    # # 계산기
-    # for path, _ in patterns.items():
-    #     calculate_security_level(path)
 
     # 이미지 후처리
     overlay_pattern(input_img, patterns, pattern_location)
-
-    # cv2.waitKey(0)
 
 if __name__ == '__main__':
     # sys.path에 현재 파일의 디렉토리 추가

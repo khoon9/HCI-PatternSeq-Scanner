@@ -42,12 +42,6 @@ def find_matching_image(test_image, image_data_dict):
     return max_like_list  # 동일한 이미지가 없으면 None 반환
 
 def compare_with_templates_dict(object_image):
-    # 이미지 데이터 딕셔너리 불러오기
-    # file_size = os.path.getsize('resource/image_data_dict.pkl')
-    # with open('resource/image_data_dict.pkl', 'rb') as f:
-    #     with tqdm(total=file_size, unit='B', unit_scale=True, desc='Loading file') as pbar:
-    #         image_data_dict = pickle.load(f)
-    #         pbar.update(file_size)
 
     file_size = os.path.getsize('resource/image_data_dict.pkl')
     data = bytearray()

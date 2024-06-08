@@ -30,7 +30,6 @@ def dfs_visit(object_image, edge_patterns, will_v, current, visited, before_patt
         # 조건 02: 구해낸 모든 경우에 대해 정렬하여, 가장 equal_cnt가 높은 path를 구해낸다. -> 현재까지의 총 equal_cnt 저장
         path_string = ', '.join(str(point) for point in path)
         patterns[path_string] = base_equal_cnt
-        print('경로:', path_string, ' 유사도:', base_equal_cnt)
         return  
 
     now_patterns = set()
