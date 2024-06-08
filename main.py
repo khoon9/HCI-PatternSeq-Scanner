@@ -9,31 +9,36 @@ from preprocessing import extract_pattern_img
 from algorithm01 import compare_with_templates
 from algorithm01 import count_grid_patterns
 from postprocessing import overlay_pattern
-from calculator import calculate_security_level
 from algorithm02 import compare_with_templates_dict
 from postprocessing import filter_on_path_dict
 from gui import open_file_dialog
 from gui import ask_user_choice
+import time
 
 
 def main():
     file_path = open_file_dialog()
     input_img = cv2.imread(file_path)
-    # input_img = cv2.imread('resource/input-patterns/002.PNG')
 
-    # algorithm = 1
+    cv2.imshow("input img",input_img)
+
     algorithm = ask_user_choice()
 
     # 이미지 전처리
     dot_pattern_input, edge_pattern_input, pattern_location = extract_pattern_img(cv2.cvtColor(input_img, cv2.COLOR_BGR2GRAY))
+    cv2.imshow("dot pattern",dot_pattern_input)
+    cv2.imshow("edge pattern", edge_pattern_input)
 
     patterns = None
 
+    start_time = time.time()
     if(algorithm==1):
+        patterns = compare_with_templates_dict(edge_pattern_input)
+    else:
         will_v = compare_with_templates(dot_pattern_input)
         patterns = count_grid_patterns(will_v, edge_pattern_input)
-    else:
-        patterns = compare_with_templates_dict(edge_pattern_input)
+    end_time = time.time()
+    print(f'알고리즘 {algorithm} 소요 시간: {end_time-start_time}ms')
 
     patterns = filter_on_path_dict(patterns)
 

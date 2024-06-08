@@ -66,9 +66,9 @@ def overlay_pattern(input_img, tuple_list_strs, pattern_location):
         n = 0
         for key in security_level_dict:
             font = cv2.FONT_HERSHEY_SIMPLEX
-            font_scale = 2
-            font_color = (255, 0, 0) 
-            thickness = 3
+            font_scale = 2.2
+            font_color = (0, 0, 0) 
+            thickness = 8
             cv2.putText(temp_img, str(f'{key}: {security_level_dict[key]}'), ( 3*r, h//3+5*r*n), font, font_scale, font_color, thickness)
             n+=1
 
@@ -82,7 +82,7 @@ def overlay_pattern(input_img, tuple_list_strs, pattern_location):
             # 원의 옆에 숫자 입력
             font = cv2.FONT_HERSHEY_SIMPLEX
             font_scale = 4
-            font_color = (0, 0, 255)  
+            font_color = (255, 0, 0)  
             thickness = 8
             cv2.putText(temp_img, str(i+1), (center[0] + r, center[1] - r), font, font_scale, font_color, thickness)
         # 패턴 경로 시각화
