@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import os
 from tqdm import tqdm
-import h5py
 
 def read_and_process_image(image_path):
     image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
@@ -28,7 +27,7 @@ def main():
 
     # dictionary를 파일로 저장 (pickle 사용)
     import pickle
-    with open('image_data_dict.pkl', 'wb') as f:
+    with open('resource/image_data_dict.pkl', 'wb') as f:
         pickle.dump(image_data_dict, f)
 
 if __name__ == "__main__":
