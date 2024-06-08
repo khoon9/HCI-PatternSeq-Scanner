@@ -67,7 +67,7 @@ def overlay_pattern(input_img, tuple_list_strs, pattern_location):
         for key in security_level_dict:
             font = cv2.FONT_HERSHEY_SIMPLEX
             font_scale = 2
-            font_color = (0, 0, 255) 
+            font_color = (255, 0, 0) 
             thickness = 3
             cv2.putText(temp_img, str(f'{key}: {security_level_dict[key]}'), ( 3*r, h//3+5*r*n), font, font_scale, font_color, thickness)
             n+=1
