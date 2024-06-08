@@ -64,8 +64,6 @@ def get_knight_move(path):
         if (dx, dy) in knight_moves:
             count += 1
     return count
-        
-
 
 # (0, 0) (0, 1) (0, 2) 
 # (1, 0) (1, 1) (1, 2) 
@@ -75,10 +73,10 @@ def get_knight_move(path):
 def calculate_security_level(path):
     path = parse_tuple_list(path)
     path_info = {
-        'pattern_length':get_pattern_length(path),
-        'directional_change': get_directional_change(path),
-        'overlapping_node': get_overlapping_node(path),
-        'knight_move': get_knight_move(path)
+        'Pattern length':get_pattern_length(path),
+        'Directional changes': get_directional_change(path),
+        'Overlapping nodes': get_overlapping_node(path),
+        'Knight moves': get_knight_move(path)
     }
 
-    print(path_info)
+    return path_info

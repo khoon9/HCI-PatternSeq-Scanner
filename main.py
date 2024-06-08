@@ -14,7 +14,7 @@ from algorithm02 import compare_with_templates_dict
 from postprocessing import filter_on_path_dict
 
 def main():
-    algorithm = 2
+    algorithm = 1
     input_img = cv2.imread('resource/input-patterns/002.PNG')
 
     # 이미지 전처리
@@ -32,9 +32,9 @@ def main():
     patterns = filter_on_path_dict(patterns)
     print(patterns)
 
-    # 계산기
-    for path, _ in patterns.items():
-        calculate_security_level(path)
+    # # 계산기
+    # for path, _ in patterns.items():
+    #     calculate_security_level(path)
 
     # 이미지 후처리
     overlay_pattern(input_img, patterns, pattern_location)
